@@ -7,11 +7,12 @@ characters (no numbers and symbols) and it should end with capital A else return
 
 function capitalA(s){
     // Add your logic.
-        //let validation1 = /[A]$/;
-       // let validation2 = /[a-zA-Z]/;
-        let validation = /[a-zA-Z]|[A]$/;
+        let validation1 = /[A]$/;
+       let validation2 = /[a-zA-Z]/;
+        //let validation = /[a-zA-Z][A]$/;
+    
 
-        return (validation.test(s)) ; 
+        return (validation1.test(s) && validation2.test(s)) ; 
     
 }
 
@@ -24,7 +25,7 @@ which end with io (example@example.io) */
 function ioEmail(email){
     let validation = /^[a-zA-Z0-9-]+@[a-zA-Z0-9-]+\.\io/;
 
-    return (validation.test(s)) ;     
+    return (validation.test(email)) ;     
 }
 
 /* You have a text that contain image names with their extention you need to write a function to 
@@ -34,33 +35,32 @@ required extention are jpg, jpeg and png.
 
 function imagesSearcher(text){
     let arr = [];
+    let arr2=[];
+    let obj = {};
     let v1 = /[a-z]+\.\jpg/g ; 
     let v2 = /[a-z]+\.\jpeg/g ; 
     let v3 = /[a-z]+\.\png/g ; 
-    if ( v1.test(text) == true ){
-        arr.push(text.match(v1));
-    }
-    if ( v2.test(text) == true ){
-    arr.push(text.match(v2));
-    }
+   
+  
     if ( v3.test(text) == true ){
     arr.push(text.match(v3));
     }
-
-    return arr
+     if ( v1.test(text) == true ){
+     arr.push(text.match(v1));
+    }
+      if ( v2.test(text) == true ){
+    arr.push(text.match(v2));
+    }
+ for (let i=0;i<arr.length ; i++)
+ {
+   arr2.push(arr[i].toString());
+ }
+    return arr2;
 }
 
 
 
-describe("Test capitalA", ()=>{
-    test("It should return true if the input has uppercase and lowercase characters (no numbers and symbols) and it should end with capital A else return false ", () => {
-        expect(capitalA("Hello world A")).toStrictEqual(true);
 
-        expect(capitalA("Hello world")).toStrictEqual(false);
-
-        expect(capitalA("Hello world a")).toStrictEqual(false);
-    })
-});
 
 describe("Test ioEmail", () => {
     test("It should return true if the input is in email format that end with .io", () => {

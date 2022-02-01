@@ -1,14 +1,11 @@
 /* Write a function to do the division operation without using the built-in division*/
 
 function division(n, m){
-    if (n < m )
-        return 0;
-        else
-        return 1 + division((n - m) , m); 
+    if (n < m || m == 0 || n== 0)
+    {        return 0;
+    }else
+        return (1 + division((n - m) , m)); 
 }
-
-division((1,2)) ; 
-
 
 
 /* Write a function that implement Math.pow(x,n) but using recursion
@@ -68,7 +65,7 @@ function permutations(n,k){
     let arr = [];
     // Write you logic here. 
     return arr
-};
+}
 
 describe("Test division", () => {
     test("Return the division result", () => {
